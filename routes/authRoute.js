@@ -5,18 +5,25 @@ import {
     // testController,
 } from "../controllers/authController.js";
 // import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
+import { requireSignIn } from "../middleware/authMiddleware.js";
 
-//router object
+// Router object
 const router = express.Router();
 
-//routing
-//REGISTER || METHOD POST
+// Routes
+// REGISTER || POST
 router.post("/register", registerController);
 
-//LOGIN || POST
+// LOGIN || POST
 router.post("/login", loginController);
+
+// Protected routes
+router.get("/user-auth", requireSignIn, (req, res) => {
+    res.status(200).send({ ok: true });
+});
+
+// Export router
+export default router;
 
 //test routes
 // router.get("/test", requireSignIn, isAdmin, testController);
-
-export default router;
