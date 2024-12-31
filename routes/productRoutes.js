@@ -13,7 +13,7 @@ router.get('/get-product', getProductController);
 
 
 //single product
-router.get('/single-product/:slug', getSingleProductController);
+router.get('/get-product/:slug', getSingleProductController);
 
 
 
@@ -21,7 +21,8 @@ router.get('/single-product/:slug', getSingleProductController);
 router.get('/product-photo/:pid', productPhotoController);
 
 //delete product
-router.delete('/product/:pid', deleteProductController);
+// Backend API route to delete a product
+router.delete('/delete-product/:pid', deleteProductController);
 
 //update product
 router.put('/update-product/:pid', requireSignIn, isAdmin, formidable(), upadteProductController);
